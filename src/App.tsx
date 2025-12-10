@@ -241,7 +241,7 @@ export default function TransactionAnalyzer() {
             Transaction Analyzer
           </h1>
           <p className="text-gray-600">
-            Upload your CSV to analyze spending patterns
+            Upload your Chase CSV to analyze spending patterns. This site works just for Chase CSV's which you can download from Chase
           </p>
         </div>
 

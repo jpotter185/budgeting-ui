@@ -1,73 +1,81 @@
-# React + TypeScript + Vite
+# Transaction Analyzer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A privacy-focused web application for analyzing your credit card or bank transactions. Upload your CSV files and get instant insights into your spending patterns.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📊 **Visual Analytics**: Interactive charts showing spending by category, daily trends, and distribution
+- 🔒 **Privacy First**: All data processing happens locally in your browser - nothing is uploaded to any server
+- 📁 **Multiple File Support**: Upload multiple CSV files at once to analyze across different time periods
+- 🎨 **Beautiful UI**: Modern, responsive design with intuitive visualizations
+- 📈 **Key Metrics**: Total spending, average transaction amount, top categories, and more
 
-## React Compiler
+## What You'll See
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Summary Cards**: Quick overview of total spending, transaction count, averages, and top category
+- **Category Breakdown**: Bar chart and pie chart showing spending distribution across categories
+- **Daily Spending Timeline**: Stacked bar chart showing daily spending patterns colored by category
+- **Detailed Table**: Complete breakdown with amounts and percentages per category
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (v16 or higher)
+- npm or yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## CSV Format
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Your CSV file should have the following columns:
+- `Transaction Date` or `TransactionDate`
+- `Post Date` or `PostDate`
+- `Description`
+- `Category`
+- `Type`
+- `Amount` (negative values for expenses)
+
+Example:
+```csv
+Transaction Date,Post Date,Description,Category,Type,Amount
+11/28/2025,11/30/2025,KROGER #273,Groceries,Sale,-41.03
+11/28/2025,11/30/2025,SHELL GAS,Travel,Sale,-35.00
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Note**: The analyzer automatically filters out:
+- Positive transactions (like credit card payments)
+- Transactions without a category
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Technology Stack
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **React 18** with TypeScript
+- **Vite** for fast development and building
+- **Tailwind CSS** for styling
+- **Recharts** for data visualization
+- **Papaparse** for CSV parsing
+- **Lucide React** for icons
+
+## Privacy & Security
+
+🔐 **Your data never leaves your browser.** 
+
+This application:
+- Processes all data client-side using JavaScript
+- Does not send any data to external servers
+- Does not store any data (everything is in memory)
+- When you refresh or close the page, all data is cleared
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Support
+
+If you find this project helpful, please consider giving it a ⭐️ on GitHub!
+
+---
+
+Made with ❤️ for personal finance tracking
